@@ -5,11 +5,12 @@ Java UI for youtube-dl
 ### major
 * properties for downloads
 * ordering download tasks
-* customizable download task pool
+* restart task option
 * extend url adding panel
+* info grabber with thumbnail downloader (in batches)
+* customizable download task pool
 * exporting tasks
 * console
-* info grabber with thumbnail downloader (in batches)
 
 ### visual
 * better error status
@@ -18,7 +19,6 @@ Java UI for youtube-dl
 * task grouping by download status
 * popup menus on task
 * popup menu in adding panel
-* restart task option
 * playlist thumbnails
 * nicer looking progress bars
 * current status in label
@@ -37,6 +37,8 @@ Java UI for youtube-dl
 #### ... and so on
 
 ## changelog
+### 0.1.3
+* added configuration dialog in menu
 ### 0.1.2
 * persistable application configuration
 * works wherever you can run youtube-dl

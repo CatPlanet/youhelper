@@ -131,6 +131,10 @@ public class App {
 		JMenuItem i = new JMenuItem("Add items");
 		i.addActionListener(e -> addItemsRequest(e));
 		menu.add(i);
+		menu.addSeparator();
+		i = new JMenuItem("Options");
+		i.addActionListener(e -> openOptions());
+		menu.add(i);
 		//TODO: temporary unavailable
 		/**
 		i = new JMenuItem("Preferences");
@@ -147,6 +151,10 @@ public class App {
 		menu.add(i);
 	}
 	
+	private void openOptions() {
+		this.optionsDialog.show();
+	}
+
 	private void callExitRequest(ActionEvent e) {
 		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 	}

@@ -156,6 +156,7 @@ public class OptionsDialog implements ActionListener, DocumentListener{
 	public void show() {
 		this.config.reload();
 		populateFields();
+		this.dialog.pack();
 		this.dialog.setLocationRelativeTo(parent);
 		this.dialog.setVisible(true);
 	}
