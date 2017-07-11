@@ -2,7 +2,7 @@
 Java UI for youtube-dl
 
 ## todo list
-major
+### major
 * properties for downloads
 * ordering download tasks
 * customizable download task pool
@@ -11,7 +11,7 @@ major
 * console
 * info grabber with thumbnail downloader (in batches)
 
-visual
+### visual
 * better error status
 * fix thumbnail ratio for non-youtube downloads
 * better imitation of list for tasks
@@ -25,7 +25,7 @@ visual
 * download task info panel
 * more fancy animations
 
-minor
+### minor
 * i18n support
 * core function in (optional) server backend
 * android remote
@@ -34,7 +34,7 @@ minor
 * logging
 * unit tests
 
-... and so on
+#### ... and so on
 
 ## changelog
 ### 0.1.2
