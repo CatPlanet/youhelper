@@ -10,7 +10,6 @@ major
 * exporting tasks
 * console
 * info grabber with thumbnail downloader (in batches)
-
 visual
 * better error status
 * fix thumbnail ratio for non-youtube downloads
@@ -24,7 +23,6 @@ visual
 * current status in label
 * download task info panel
 * more fancy animations
-
 minor
 * i18n support
 * core function in (optional) server backend
@@ -33,8 +31,7 @@ minor
 * automated config creation and input verifier
 * logging
 * unit tests
-
-* ... and so on
+... and so on
 
 ## changelog
 ### 0.1.2
