@@ -1,0 +1,55 @@
+[{
+  "@class" : "eu.kaguya.youhelper.preferences.Preference",
+  "uuid" : "d97fb8db-b5ae-4bc2-b00f-78d7572bc873",
+  "name" : "default",
+  "options" : [ {
+    "@class" : "eu.kaguya.youhelper.preferences.PreferenceOptionGroup",
+    "id" : "playlist",
+    "type" : "ZERO_OR_MORE_CHOICES",
+    "options" : [ {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "label" : "is playlist",
+      "checked" : false
+    } ]
+  }, {
+    "@class" : "eu.kaguya.youhelper.preferences.PreferenceOptionGroup",
+    "id" : "randomCheckboxes",
+    "type" : "ZERO_OR_MORE_CHOICES",
+    "options" : [ {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "id" : "1",
+      "label" : "a",
+      "checked" : true
+    }, {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "id" : "2",
+      "label" : "b",
+      "checked" : true
+    }, {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "id" : "3",
+      "label" : "c",
+      "checked" : false
+    } ]
+  }, {
+    "@class" : "eu.kaguya.youhelper.preferences.PreferenceOptionGroup",
+    "id" : "radios",
+    "type" : "ONLY_ONE_CHOICE",
+    "options" : [ {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "id" : "4",
+      "label" : "a",
+      "checked" : false
+    }, {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "id" : "5",
+      "label" : "b",
+      "checked" : true
+    }, {
+      "@class" : "eu.kaguya.youhelper.preferences.PreferenceChoiceOption",
+      "id" : "6",
+      "label" : "c",
+      "checked" : false
+    } ]
+  } ]
+}]
