@@ -215,7 +215,7 @@ public class Thumbnail extends JPanel {
 			if (g instanceof Graphics2D) {
 				Graphics2D g2 = (Graphics2D) g;
 				Composite c = g2.getComposite();
-				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f * Math.min(1f, progress * 1.5f)));
+				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, Math.max(0.3f, Math.min(1f, progress * 1.5f))));
 				g2.fillRoundRect(getWidth() - sWidth - 3, getHeight() - sHeight * 1 - 4 - 2, sWidth + 4, sHeight + 4, 7, 20);
 				g2.setComposite(c);
 			}
