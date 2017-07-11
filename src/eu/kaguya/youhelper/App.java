@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -27,8 +28,9 @@ import eu.kaguya.youhelper.ui.OptionsDialog;
 
 public class App {
 	
-	public static String DIR;
-
+	public static final File configSource = new File(System.getProperty("user.home"), ".youhelper/");
+	public static final String configFile = "configuration.properties";
+	
 	public static void main(String[] args) throws IOException {
 		SwingUtilities.invokeLater(() -> {
 			try {
@@ -163,7 +165,7 @@ public class App {
 //	}
 	
 	private void makeList(){
-		list = new ItemStatusList(new Downloader<DownloaderTask>(1));
+		list = new ItemStatusList(new Downloader<DownloaderTask>(1, this.config));
 		list.configureUI();
 		
 		frame.setLayout(new BorderLayout());
