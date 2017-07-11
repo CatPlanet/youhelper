@@ -1,6 +1,8 @@
 # YouHelper
 Java UI for youtube-dl
 
+![YouHelper preview](https://raw.githubusercontent.com/CatPlanet/youhelper/tree/develop/docs/images/sample.png)
+
 ## todo list
 ### major
 * properties for downloads
@@ -11,6 +13,7 @@ Java UI for youtube-dl
 * customizable download task pool
 * exporting tasks
 * console
+* download processor
 
 ### visual
 * better error status
