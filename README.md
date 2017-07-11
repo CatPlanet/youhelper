@@ -15,11 +15,13 @@ Java UI for youtube-dl
 * better imitation of list for tasks
 * task grouping by download status
 * exporting tasks
-* popup menus
+* popup menus on atsk
+* popup menu in adding panel
 * restart task option
 * playlist thumbnails
 * nicer looking progress bars
 * console
+* proxy support
 * current status in label
 * info grabber with thumbnail downloader (in batches)
 * download task info panel
