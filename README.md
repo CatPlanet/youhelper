@@ -24,6 +24,8 @@ Java UI for youtube-dl
 * info grabber with thumbnail downloader (in batches)
 * download task info panel
 * more fancy animations
+* logging
+* unit tests
 * ... and so on
 
 ## changelog

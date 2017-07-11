@@ -65,7 +65,6 @@ public class App {
 	}
 
 	private JFrame frame;
-	private String version = "0.1-RELEASE";
 	
 	private ItemStatusList list;
 	private AddItemsProcess addItemsDialog;
@@ -79,7 +78,7 @@ public class App {
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(600, 400));
 		frame.setSize(new Dimension(600, 600));
-		frame.setTitle("YouHelper v."+version);
+		frame.setTitle("YouHelper");
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
