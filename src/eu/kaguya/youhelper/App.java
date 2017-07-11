@@ -18,17 +18,18 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import org.aeonbits.owner.ConfigFactory;
+
+import eu.kaguya.youhelper.config.YouHelperConfiguration;
 import eu.kaguya.youhelper.core.Downloader;
 import eu.kaguya.youhelper.core.DownloaderTask;
+import eu.kaguya.youhelper.ui.OptionsDialog;
 
 public class App {
 	
 	public static String DIR;
 
 	public static void main(String[] args) throws IOException {
-		DIR = args[0]; //TODO
-		System.out.println("YouTube-DL directory: " + DIR);
-		
 		SwingUtilities.invokeLater(() -> {
 			try {
 			    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -62,16 +63,26 @@ public class App {
 
 	protected void start() {
 		frame.setVisible(true);
+		
+		popupOptionsDialog();
 	}
+	
+	private YouHelperConfiguration config;
 
 	private JFrame frame;
 	
 	private ItemStatusList list;
 	private AddItemsProcess addItemsDialog;
 	private PreferencesWindow preferencesWindow;
+	private OptionsDialog optionsDialog;
 	
 	public App(){
+		makeConfig();
 		makeUI();
+	}
+
+	private void makeConfig() {
+		config = ConfigFactory.create(YouHelperConfiguration.class);
 	}
 
 	protected void makeUI() {
@@ -96,8 +107,20 @@ public class App {
 		makeList();
 		makeAddItemsDialog();
 		makePreferencesWindow();
+		makeOptionsDialog();
 	}
 	
+	private void popupOptionsDialog() {
+		if(config.directory() == null || config.executable() == null){
+			optionsDialog.show();
+		}
+	}
+
+	private void makeOptionsDialog() {
+		optionsDialog = new OptionsDialog(frame, config);
+		optionsDialog.configureUI();
+	}
+
 	private void makeMenu() {
 		JMenuBar bar = new JMenuBar();
 		frame.setJMenuBar(bar);
