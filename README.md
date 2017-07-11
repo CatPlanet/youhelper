@@ -1,7 +1,7 @@
 # YouHelper
 Java UI for youtube-dl
 
-![YouHelper preview](https://raw.githubusercontent.com/CatPlanet/youhelper/tree/develop/docs/images/sample.png)
+![YouHelper preview](https://raw.githubusercontent.com/CatPlanet/youhelper/develop/docs/images/sample.png)
 
 ## todo list
 ### major
