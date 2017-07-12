@@ -66,6 +66,8 @@ public class JProgressLine extends JPanel {
 		if (spinner.getEditor() instanceof JSpinner.DefaultEditor) {
 			((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setColumns(2);
 		}
+		
+		spinner.setEnabled(false); //TODO
 
 		p.add(spinner, c);
 		
@@ -77,7 +79,7 @@ public class JProgressLine extends JPanel {
 		c.gridy = 0;
 		c.weighty = 0;
 		c.weightx = 0;
-		max = new JLabel("");
+		max = new JLabel(""); //TODO
 		
 		p.add(max,c);
 		
@@ -111,6 +113,8 @@ public class JProgressLine extends JPanel {
 		b.putClientProperty("Nimbus.Overrides", defaults);
 		b.addActionListener(a -> itemStatus.settings());
 		
+		b.setEnabled(false); //TODO
+		
 		add(b);
 	}
 
@@ -120,7 +124,7 @@ public class JProgressLine extends JPanel {
 		defaults.put("Button.background", new Color(0.75f, 0.35f, 0.15f));
 		b.putClientProperty("Nimbus.Overrides.InheritDefaults", Boolean.TRUE);
 		b.putClientProperty("Nimbus.Overrides", defaults);
-		b.addActionListener(a -> itemStatus.cancel()); //TODO
+		b.addActionListener(a -> itemStatus.cancel()); //TODO restart
 
 		add(b);
 	}
@@ -132,6 +136,8 @@ public class JProgressLine extends JPanel {
 		b.putClientProperty("Nimbus.Overrides.InheritDefaults", Boolean.TRUE);
 		b.putClientProperty("Nimbus.Overrides", defaults);
 		b.addActionListener(a -> itemStatus.remove());
+		
+		//TODO rmb with deletion options in popup menu
 		
 		add(b);
 	}
