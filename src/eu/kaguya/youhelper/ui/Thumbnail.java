@@ -308,10 +308,11 @@ public class Thumbnail extends JPanel {
 	}
 
 	public void load(BufferedImage thumbnailImage) {
-		if (SwingUtilities.isEventDispatchThread()) this.bg = thumbnailImage;
-		else
-			SwingUtilities.invokeLater(() -> this.bg = thumbnailImage);
-		repaint();
+		if (SwingUtilities.isEventDispatchThread()){
+			this.bg = thumbnailImage;
+			repaint();
+		}
+		else SwingUtilities.invokeLater(() -> { this.bg = thumbnailImage; repaint(); });
 	}
 
 	public boolean isThumbnailLoaded() {
@@ -322,8 +323,8 @@ public class Thumbnail extends JPanel {
 		return this.isThumbnailLoaded() || this.loading;
 	}
 
-	public void setDuration(long duration, TimeUnit unit) {
-		this.duration = (int) unit.toSeconds(duration);
+	public void setDuration(Integer duration, TimeUnit unit) {
+		this.duration = duration == null ? -1 : (int) unit.toSeconds(duration);
 		repaint();
 	}
 
@@ -331,9 +332,9 @@ public class Thumbnail extends JPanel {
 		this.duration = -1;
 	}
 
-	public void setLikesDislikes(int likes, int dislikes) {
-		this.likes = likes;
-		this.dislikes = dislikes;
+	public void setLikesDislikes(Integer likes, Integer dislikes) {
+		this.likes = likes == null ? -1 : likes;
+		this.dislikes = dislikes == null ? -1 : dislikes;
 		repaint();
 	}
 
