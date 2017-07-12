@@ -3,17 +3,17 @@ Java UI for youtube-dl
 
 ![YouHelper preview](https://raw.githubusercontent.com/CatPlanet/youhelper/develop/docs/images/sample.png)
 
-## todo list
+## TODO LIST
 ### major
 * properties for downloads
 * ordering download tasks
 * restart task option
 * extend url adding panel
-* info grabber with thumbnail downloader (in batches)
 * customizable download task pool
 * exporting tasks
 * console
 * download processor
+* general refactoring
 
 ### visual
 * better error status
@@ -39,19 +39,24 @@ Java UI for youtube-dl
 
 #### ... and so on
 
-## changelog
+## CHANGELOG
+### 0.1.4
+* better thumbnail fetching
+
 ### 0.1.3
 * added configuration dialog in menu
+
 ### 0.1.2
 * persistable application configuration
 * works wherever you can run youtube-dl
+
 ### 0.1.1
 * initial version
 * using default best strategy for downloading (with merging)
 * works only on Windows
 * but works
 
-## licence
+## LICENCE
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
 
 ## everything else

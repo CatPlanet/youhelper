@@ -59,20 +59,6 @@ public class DownloaderTask implements Runnable, CallableOrderedEarlyStatus<Down
 			File dir = new File(this.config.directory());
 			File executable = new File(dir, this.config.executable());
 
-			//TODO only if no prefetching was made
-			synchronized (this) {
-				p = new ProcessBuilder(executable.toString(), "--dump-json", status.getRequestedURL().toExternalForm())
-						.directory(dir)
-						.redirectErrorStream(true)
-						.start();
-			}
-			try(Scanner s = new Scanner(p.getInputStream())){
-				while(s.hasNextLine() && !isCanceled()){
-					String m = s.nextLine();
-					processor.consume(m);
-				}
-			}
-
 			synchronized (this) {
 				p = new ProcessBuilder(executable.toString(), "--restrict-filenames", status.getRequestedURL().toExternalForm())
 						.directory(dir)
@@ -91,6 +77,9 @@ public class DownloaderTask implements Runnable, CallableOrderedEarlyStatus<Down
 						status.update(Float.parseFloat(matcher.group(1)), matcher.group(2), matcher.group(3), matcher.group(4));
 					} else {
 						System.out.println(">"+m);
+					}
+					if(m.contains("has already been downloaded")){ //TODO quick hack until download processor fix
+						status.update(100, null, null, null);
 					}
 					if(m.startsWith("ERROR")){
 						status.error();

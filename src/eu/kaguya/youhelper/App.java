@@ -24,6 +24,7 @@ import org.aeonbits.owner.ConfigFactory;
 import eu.kaguya.youhelper.config.YouHelperConfiguration;
 import eu.kaguya.youhelper.core.Downloader;
 import eu.kaguya.youhelper.core.DownloaderTask;
+import eu.kaguya.youhelper.core.InfoGrabber;
 import eu.kaguya.youhelper.ui.OptionsDialog;
 
 public class App {
@@ -77,9 +78,11 @@ public class App {
 	private AddItemsProcess addItemsDialog;
 	private PreferencesWindow preferencesWindow;
 	private OptionsDialog optionsDialog;
+	private InfoGrabber infoGrabber;
 	
 	public App(){
 		makeConfig();
+		this.infoGrabber = new InfoGrabber(this.config);
 		makeUI();
 	}
 
@@ -173,7 +176,7 @@ public class App {
 //	}
 	
 	private void makeList(){
-		list = new ItemStatusList(new Downloader<DownloaderTask>(1, this.config));
+		list = new ItemStatusList(new Downloader<DownloaderTask>(1, this.config), this.infoGrabber);
 		list.configureUI();
 		
 		frame.setLayout(new BorderLayout());

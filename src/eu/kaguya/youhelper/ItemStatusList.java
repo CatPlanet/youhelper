@@ -13,15 +13,18 @@ import javax.swing.SwingUtilities;
 
 import eu.kaguya.youhelper.core.Downloader;
 import eu.kaguya.youhelper.core.DownloaderTask;
+import eu.kaguya.youhelper.core.InfoGrabber;
 import eu.kaguya.youhelper.core.ItemStatusComparator;
 
 public class ItemStatusList {
 	private TreeMap<ItemStatus, Future<DownloaderTask>> tasks;
 	private Downloader<DownloaderTask> downloader;
 	private JPanel list;
+	private InfoGrabber infoGrabber;
 	
-	public ItemStatusList(Downloader<DownloaderTask> downloader){
+	public ItemStatusList(Downloader<DownloaderTask> downloader, InfoGrabber infoGrabber){
 		this.downloader = downloader;
+		this.infoGrabber = infoGrabber;
 		tasks = new TreeMap<>(new ItemStatusComparator());
 	}
 
@@ -77,6 +80,7 @@ public class ItemStatusList {
 	public void addAndRunTask(ItemStatus task){
 		if(!tasks.containsKey(task)){
 			tasks.put(task, (Future<DownloaderTask>) downloader.submit(task));
+			infoGrabber.requestInfoGrab(task);
 			SwingUtilities.invokeLater(() -> {
 				addTaskToList(task);
 			});
@@ -86,6 +90,7 @@ public class ItemStatusList {
 	public void runTask(ItemStatus task){
 		tasks.remove(task);
 		tasks.put(task, (Future<DownloaderTask>) downloader.submit(task));
+		infoGrabber.requestInfoGrab(task);
 		SwingUtilities.invokeLater(() -> {
 			addTaskToList(task);
 		});

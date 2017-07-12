@@ -4,18 +4,21 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import eu.kaguya.youhelper.ItemStatus;
+import lombok.Setter;
 
-@SuppressWarnings("unused")
 public class DownloadProcessor {
 	public enum DownloadMode {
 		STANDARD, INFO, END
 	}
+	public static interface JsonDumpListener {
+		void json(JsonDump dump);
+	}
 
 	private ItemStatus status;
+	@Setter JsonDumpListener dumpListener;
 	DownloadMode mode = DownloadMode.STANDARD;
 	
 	private static final Pattern downloadProgressPattern = Pattern.compile("\\[download\\]\\s+(.*?)\\s+of\\s+(.*?)\\s+at\\s+(.*?)\\s+ETA\\s+(.*?)");
@@ -34,6 +37,8 @@ public class DownloadProcessor {
 	private static final Pattern infoThumbnailsHeaderPattern = Pattern.compile("ID\\s+width\\s+height\\s+URL");
 	private static final Pattern json = Pattern.compile("\\{\".*?\\}");
 
+	public DownloadProcessor(){}
+	
 	public DownloadProcessor(ItemStatus status){
 		this.status = status;
 	}
@@ -63,7 +68,7 @@ public class DownloadProcessor {
 		JsonDump dump;
 		try {
 			dump = m.readValue(message, JsonDump.class);
-			this.status.populateWith(dump);
+			if(this.dumpListener != null) this.dumpListener.json(dump);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

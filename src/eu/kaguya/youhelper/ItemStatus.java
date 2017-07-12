@@ -1,14 +1,18 @@
 package eu.kaguya.youhelper;
 
-import java.awt.Component;
 import java.net.URL;
 import java.util.UUID;
 
 import javax.swing.SwingUtilities;
 
 import eu.kaguya.youhelper.core.DownloadProcessor;
+import eu.kaguya.youhelper.core.InfoGrabber;
+import eu.kaguya.youhelper.core.InfoGrabber.Status;
 import eu.kaguya.youhelper.core.JsonDump;
 import eu.kaguya.youhelper.ui.VisualItemStatus;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 public class ItemStatus implements Comparable<ItemStatus> {
 
@@ -21,6 +25,8 @@ public class ItemStatus implements Comparable<ItemStatus> {
 	private boolean error = false;
 	private boolean done = false;
 	private volatile boolean canceled = false;
+	@Getter @Setter @NonNull
+	private InfoGrabber.Status infoGrabStatus = Status.NOT_STARTED;
 	
 	private int order;
 	
@@ -37,7 +43,7 @@ public class ItemStatus implements Comparable<ItemStatus> {
 	}
 	
 	@Override
-	public int compareTo(ItemStatus o) {
+	public int compareTo(ItemStatus o) { //TODO
 		return Integer.compare(order(), o.order());
 	}
 	
@@ -111,7 +117,7 @@ public class ItemStatus implements Comparable<ItemStatus> {
 		return canceled;
 	}
 	
-	public Component getView(){
+	public VisualItemStatus getView(){
 		return this.visualComponent;
 	}
 

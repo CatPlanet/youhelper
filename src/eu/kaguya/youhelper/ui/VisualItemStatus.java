@@ -1,6 +1,5 @@
 package eu.kaguya.youhelper.ui;
 
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.FocusEvent;
@@ -9,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -168,24 +166,6 @@ public class VisualItemStatus extends JPanel implements VisualItemController, Th
 		this.thumbnail.fetchingStarted();
 		this.thumbnail.setLikesDislikes(dump.getLike_count(), dump.getDislike_count());
 		this.thumbnail.setDuration(dump.getDuration(), TimeUnit.SECONDS);
-		if(dump.getThumbnail() == null || !dump.getThumbnail().isEmpty()){
-			Thread t = new Thread(() -> {
-				try {
-					//TODO
-					BufferedImage img = ImageIO.read(new URL(dump.getThumbnail()));
-					BufferedImage newImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
-					Graphics2D g = newImage.createGraphics();
-					g.drawImage(img, 0, 0, null);
-					g.dispose();
-					
-					this.fetchingComplete(newImage);
-				} catch (Exception e) {
-					this.fetchingError(e);
-				}
-			});
-			t.setDaemon(true);
-			t.start();
-		}
 		this.infoPanel.setCurrentID(dump.getId());
 		this.infoPanel.setCurrentService(url);
 	}
