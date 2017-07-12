@@ -21,22 +21,8 @@ import javax.imageio.ImageIO;
 
 import eu.kaguya.youhelper.ItemStatus;
 import eu.kaguya.youhelper.config.YouHelperConfiguration;
-import lombok.Getter;
 
 public class InfoGrabber {
-	
-	// enum for info fetching status
-	
-	public static enum Status {
-		NOT_STARTED(true), REQUESTED(false), STARTED(false), FINISHED(false), ERROR(false);
-		
-		@Getter
-		private boolean eligibleForDownload;
-
-		Status(boolean eligibleForDownload){
-			this.eligibleForDownload = eligibleForDownload;
-		}
-	}
 	
 	// runnable task for scheduled json info grab
 	// structure to kill for
@@ -52,8 +38,6 @@ public class InfoGrabber {
 				System.out.println("Grabbed "+list.size()+" items");
 			}
 			if(!list.isEmpty()){
-				list.stream().forEach(i -> i.setInfoGrabStatus(Status.STARTED));
-				
 				DownloadProcessor processor = new DownloadProcessor();
 				final List<ItemStatus> finalList = list; //thanks, java
 				processor.setDumpListener((d) -> {
@@ -150,15 +134,11 @@ public class InfoGrabber {
 	
 	// public API
 	
-	//TODO synchronize itemStatus as well
 	public void requestInfoGrab(ItemStatus itemStatus){
-		if(itemStatus.getInfoGrabStatus().isEligibleForDownload()){
-			itemStatus.setInfoGrabStatus(Status.REQUESTED);
-			synchronized(this.pendingList){
-				this.pendingList.add(itemStatus);
-			}
-			pokeScheduler();
+		synchronized(this.pendingList){
+			this.pendingList.add(itemStatus);
 		}
+		pokeScheduler();
 	}
 
 	// helper methods
