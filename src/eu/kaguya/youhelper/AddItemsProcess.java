@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dialog.ModalityType;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -37,17 +35,11 @@ public class AddItemsProcess {
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		content.add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
-		JButton button = new JButton("Continue");
+		JButton button = new JButton("Add");
 		JPanel buttonPane = new JPanel();
 		buttonPane.add(button);
 		content.add(buttonPane, BorderLayout.SOUTH);
 		button.addActionListener(e -> addItemsToList(e, textArea));
-		addItemsDialog.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e){
-				resetInputArea();
-			}
-		});
 	}
 	
 	private void resetInputArea() {
