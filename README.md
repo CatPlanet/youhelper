@@ -13,12 +13,17 @@ Java UI for youtube-dl
 * exporting tasks
 * console
 * download processor
+* adding task panel rework
+* clipboard watcher
 * general refactoring
 
 ### visual
+* titles
 * better error status
 * fix thumbnail ratio for non-youtube downloads
-* better imitation of list for tasks
+* better imitation of list for tasks OR/AND
+* fluent active/todo/done grouping
+* tooltip on tasks
 * task grouping by download status
 * popup menus on task
 * popup menu in adding panel
@@ -26,14 +31,14 @@ Java UI for youtube-dl
 * nicer looking progress bars
 * current status in label
 * download task info panel
-* more fancy animations
+* fancy animations
 
 ### minor
 * i18n support
 * core function in (optional) server backend
 * android remote
 * proxy support
-* automated config creation and input verifier
+* automated config creation and input verifier (to another project)
 * logging
 * unit tests
 
