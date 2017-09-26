@@ -40,6 +40,10 @@ Java UI for youtube-dl
 #### ... and so on
 
 ## CHANGELOG
+### 0.1.5
+* externalized assets and fixed asset loading within jar (jar ready)
+* convenient popup menu for pasting links in adding dialog
+
 ### 0.1.4
 * better thumbnail fetching
 
