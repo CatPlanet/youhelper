@@ -106,7 +106,7 @@ public class JProgressLine extends JPanel {
 	}
 
 	private void makeSettingsButon() {
-		JButton b = new JButton(new ImageIcon("resources/settings.png"));
+		JButton b = new JButton(new ImageIcon(JProgressLine.class.getResource("/settings.png")));
 		UIDefaults defaults = UIManager.getLookAndFeelDefaults();
 		defaults.put("Button.background", new Color(0.65f, 0.65f, 0.65f));
 		b.putClientProperty("Nimbus.Overrides.InheritDefaults", Boolean.TRUE);
@@ -119,7 +119,7 @@ public class JProgressLine extends JPanel {
 	}
 
 	private void makeStopButton() {
-		JButton b = new JButton(new ImageIcon("resources/stop.png"));
+		JButton b = new JButton(new ImageIcon(JProgressLine.class.getResource("/stop.png")));
 		UIDefaults defaults = UIManager.getLookAndFeelDefaults();
 		defaults.put("Button.background", new Color(0.75f, 0.35f, 0.15f));
 		b.putClientProperty("Nimbus.Overrides.InheritDefaults", Boolean.TRUE);
@@ -130,7 +130,7 @@ public class JProgressLine extends JPanel {
 	}
 
 	private void makeRemovalButton() {
-		JButton b = new JButton(new ImageIcon("resources/remove.png"));
+		JButton b = new JButton(new ImageIcon(JProgressLine.class.getResource("/remove.png")));
 		UIDefaults defaults = UIManager.getLookAndFeelDefaults();
 		defaults.put("Button.background", new Color(0.75f, 0.15f, 0.15f));
 		b.putClientProperty("Nimbus.Overrides.InheritDefaults", Boolean.TRUE);

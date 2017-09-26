@@ -17,7 +17,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -159,10 +158,10 @@ public class Thumbnail extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (bgEmpty == null) {
-			bgEmpty = loadImage("resources/no_thumbnail.jpg");
+			bgEmpty = loadImage("/no_thumbnail.jpg");
 		}
 		if (play == null) {
-			play = loadImage("resources/play-button.png");
+			play = loadImage("/play-button.png");
 		}
 
 		if (g instanceof Graphics2D) {
@@ -280,7 +279,7 @@ public class Thumbnail extends JPanel {
 
 	private BufferedImage loadImage(String url) {
 		try {
-			BufferedImage img = ImageIO.read(new File(url));
+			BufferedImage img = ImageIO.read(Thumbnail.class.getResource(url));
 			if (img != null) {
 				BufferedImage newImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
 				Graphics2D g = newImage.createGraphics();
